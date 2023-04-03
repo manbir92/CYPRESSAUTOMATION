@@ -1,6 +1,6 @@
 // <reference types="cypress" />  
 
-it('Loginpage', function ()
+it('Add to cart', function ()
 {
     cy.visit('https://automationteststore.com/');
     cy.url().should('eq','https://automationteststore.com/')
