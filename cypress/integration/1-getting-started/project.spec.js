@@ -1,42 +1,14 @@
-
-
 // <reference types="cypress" />  
-describe('hooks', function ()
+
+it('Add to cart', function ()
 {
-  before(function () {
-
-    //it runs after each test case/it block
-    cy.log('website hook')
-     cy.visit('https://automationteststore.com');
-     cy.url().should('eq','https://automationteststore.com/')
-
-    // To close the website after each test case
-})
-  beforeEach(function(){
-   cy.log("login detail")
-   cy.xpath('//*[@id="customer_menu_top"]').click()
-   
-
-  })
-  afterEach(function() {
-    //it run after each test case
-    cy.log('logout hook')
-    cy.xpath('//*[@id="maincontainer"]/div/div[2]/div[1]/div/ul/li[10]/a').click()
-  
-  }) 
-  after(function() {
-    cy.log('logout')
-    cy.xpath('//*[@id="categorymenu"]/nav/ul/li[1]/a').click()
-  })
-      
-      
-it('buy product 1', function ()
-{
-  cy.xpath('//*[@id="loginFrm_loginname"]').type('psycho666')
-  cy.xpath('//*[@id="loginFrm_password"]').type('psycho666')
-  cy.xpath('//*[@id="loginFrm"]/fieldset/button').click()
-
-
+    cy.visit('https://automationteststore.com/');
+    cy.url().should('eq','https://automationteststore.com/')
+    cy.xpath('//*[@id="customer_menu_top"]').click()
+    cy.xpath('//*[@id="loginFrm_loginname"]').type('psycho666')
+    cy.xpath('//*[@id="loginFrm_password"]').type('psycho666')
+    cy.xpath('//*[@id="loginFrm"]/fieldset/button').click()
+    
     // Assertion to verify the title
 
     cy.title().should('eq','My Account')
@@ -87,10 +59,6 @@ it('buy product 1', function ()
     cy.get('div').should('contain','Shipping Address')
     cy.get('div').should('contain','Payment Address')
     cy.xpath('//*[@id="categorymenu"]/nav/ul/li[1]/a').click()
-    cy.xpath('//*[@id="customer_menu_top"]/li/a').click()
     
-
-})
-
 
 })
