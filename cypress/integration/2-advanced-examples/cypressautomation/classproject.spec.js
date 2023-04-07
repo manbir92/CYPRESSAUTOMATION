@@ -91,6 +91,47 @@ it('buy product 1', function ()
     
 
 })
+it('buy product 2', function ()
+{
+    
+    
+    cy.xpath('//*[@id="loginFrm_loginname"]').type('aman99')
+    cy.xpath('//*[@id="loginFrm_password"]').type('aman1999')
+    cy.xpath('//*[@id="loginFrm"]/fieldset/button').click()
+    
+    // Assertion to verify the title
 
+    cy.title().should('eq','My Account')
+
+    // Assertion to verify landed on correct page after login 
+     
+    cy.get('li').should('contain','Account Dashboard')
+    cy.get('h1').should('contain','My Account').and('contain','aman')
+     
+    //buy product
+
+    cy.xpath('//*[@id="categorymenu"]/nav/ul/li[8]/a').click()
+    cy.get('h1').should('contain','Books')
+    cy.xpath('//*[@id="maincontainer"]/div/div/div/div/div[3]/div[4]/div[2]/a/img').click()
+    cy.get('h1').should('contain','Allegiant by Veronica Roth')
+    cy.xpath('//*[@id="product_quantity"]').clear()
+    cy.xpath('//*[@id="product_quantity"]').type('4')
+    cy.xpath('//*[@id="product"]/fieldset/div[4]/ul/li/a').click()
+    cy.xpath('//*[@id="cart_checkout1"]').click()
+     //order csummary
+     cy.get('h1').should('contain','Checkout Confirmation')
+     cy.get('h2').should('contain','Order Summary')
+     cy.xpath('//*[@id="checkout_btn"]').click()
+ 
+     // order confirmation
+ 
+     cy.get('h1').should('contain',' Your Order Has Been Processed!')
+     cy.get('div').should('contain','Thank you for shopping with us!')
+     cy.xpath('//*[@id="categorymenu"]/nav/ul/li[1]/a').click()
+     cy.xpath('//*[@id="customer_menu_top"]/li/a').click()
+
+    
+
+})
 
 })
