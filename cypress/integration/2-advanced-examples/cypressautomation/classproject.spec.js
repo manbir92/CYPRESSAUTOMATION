@@ -5,12 +5,12 @@ describe('hooks', function ()
 {
   before(function () {
 
-    //it runs after each test case/it block
+    //it runs before each test case/it block
     cy.log('website hook')
      cy.visit('https://automationteststore.com');
      cy.url().should('eq','https://automationteststore.com/')
 
-    // login details after each test case
+    // login details in each test case
 })
   beforeEach(function(){
    cy.log("login detail")
