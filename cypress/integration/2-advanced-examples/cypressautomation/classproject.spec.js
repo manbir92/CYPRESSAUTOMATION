@@ -10,7 +10,7 @@ describe('hooks', function ()
      cy.visit('https://automationteststore.com');
      cy.url().should('eq','https://automationteststore.com/')
 
-    // To close the website after each test case
+    // login details after each test case
 })
   beforeEach(function(){
    cy.log("login detail")
